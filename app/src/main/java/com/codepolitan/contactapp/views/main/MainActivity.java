@@ -1,14 +1,17 @@
-package com.codepolitan.contactapp;
+package com.codepolitan.contactapp.views.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.codepolitan.contactapp.R;
 import com.codepolitan.contactapp.adapter.ContactAdapter;
 import com.codepolitan.contactapp.model.Contact;
+import com.codepolitan.contactapp.views.detailcontact.DetailContactActivity;
 
 import java.util.ArrayList;
 
@@ -111,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
         //OnClick
         contactAdapter.onClick(contact -> {
-            Toast.makeText(this, contact.getName(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, DetailContactActivity.class);
+            intent.putExtra(DetailContactActivity.EXTRA_CONTACT, contact);
         });
     }
 }
